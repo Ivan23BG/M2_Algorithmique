@@ -1,3 +1,31 @@
 \section{Example section title}
 
 This is an example section. You can use this template as a starting point for your own LaTeX documents. The preamble includes a variety of packages and custom commands to help you write mathematical content, code listings, and more.
+
+\begin{preuve}
+    Soit \(H\) le sous graphe induit de \(G\) de degré moyen maximum et de nombre de sommets minimum pour cela.
+
+    Si \(\delta(H) \geq k + 1\), on a gagné,
+
+    Sinon, \(H\) contient \(x\) avec \(d_H(x) \leq k\).
+
+    En particulier, on a \(\ol d(H) \geq \ol d(G) \geq 2k\).
+    On a 
+    \begin{equation*}
+        \begin{aligned}
+            &\hphantom{=} 2m(H \setminus x) \\
+            &= 2m(H) - 2d_H(x) \geq 2(m(H) - k) \\
+            &\geq \frac2{n(H)} \cdot \left(n(H) m(H) - n(H) k\right) \\
+            &\geq \frac2{n(H)} \cdot \left(n(H) m(H) - m(H)\right) \\
+            &\geq 2 \cdot \frac{m(H)}{n(H)} \cdot (n(H) - 1) \\
+            &= \ol d(H) \cdot (n(H \setminus x)) \\
+        \end{aligned}
+    \end{equation*}
+    Et donc
+    \begin{equation*}
+        \ol d(H \setmminus x) = 2 \frac{m(H \setminus x)}{n(H \setminus x)} \geq \ol d(H) 
+    \end{equation*}
+
+    Si \(\ol d(H \setminus x) > \ol d(H)\) alors on contredit le choix de \(H\).
+    Si \(\ol d(H \setminus x) = \ol d(H)\) alors on contredit le choix de \(H\) aussi car \(H \setminus x\) a un sommet de moins que \(H\) (et est non nul).
+\end{preuve}
