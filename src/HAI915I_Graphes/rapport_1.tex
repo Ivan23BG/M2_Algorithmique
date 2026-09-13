@@ -1,8 +1,84 @@
-\section{Example section title}
-% LTeX: language=en
-This is an example section. You can use this template as a starting point for your own LaTeX documents. The preamble includes a variety of packages and custom commands to help you write mathematical content, code listings, and more.
-% LTeX: language=fr
-\begin{preuve}
+\section{Mineurs de graphes}
+
+\begin{td-exo}[Ordres graphiques]\, % 1
+    \begin{enumerate}
+        \item Montrer que la relation de sous-graphe forme un ordre sur les graphes.
+        \item On définit la relation suivante sur les graphes :
+        \begin{equation*}
+            G \ll G' \text{ si } n(G) \leq n(G') \quad\text{ et } m(G) \leq m(G').
+        \end{equation*}
+        La relation \(\ll\) forme-t-elle un ordre sur les graphes ?
+    \end{enumerate}
+\end{td-exo}
+
+\iftoggle{showsolutions}{ 
+	\begin{td-sol}[]\, % 1
+		\begin{enumerate}
+            \item On rappelle la définition d'un ordre :
+            
+            \begin{definition}
+                Soit \(E\) un ensemble et \(\mathcal{R}\) une relation entre deux éléments de \(E\).
+                On dit que \(\mathcal{R}\) est une \defemph{relation d'ordre} sur \(E\) si elle vérifie les propriétés suivantes :
+                \begin{enumerate}[label=\roman*)]
+                    \item Réflexivité : pour tout \(x \in E\), on a \(x\mathcal{R}x\).
+                    \item Antisymétrie : pour tous \(x,y\in E\), si \(x\mathcal{R}y\) et \(y\mathcal{R}x\) alors \(x = y\).
+                    \item Transitivité : pour tous \(x,y,z\in E\), si \(x\mathcal{R}y\) et \(y\mathcal{R}z\) alors \(x\mathcal{R}z\).
+                \end{enumerate}
+            \end{definition}
+
+            Vérifions alors ces propriétés sur la relation de sous-graphe :
+            \begin{enumerate}
+                \item Réflexivité : pour tout graphe \(G\) on a bien \(V(G) \subseteq V(G)\) et \(E(G) \subseteq E(G)\) donc \(G\) est bien sous-graphe de \(G\).
+
+                \item Antisymétrie : soient \(G\) et \(H\) deux graphes tels que \(G\) est sous-graphe de \(H\) et \(H\) est sous-graphe de \(G\).
+                On a :
+                \begin{equation*}
+                    \begin{aligned}
+                        \hphantom{\implies} & V(G) \subseteq V(H) \quad \text{ et } V(H) \subseteq V(G) \\
+                        \implies & V(G) \subseteq V(H) \subseteq V(G) \\
+                        \implies & V(G) = V(H).
+                    \end{aligned}
+                \end{equation*}
+
+                De même, on a : 
+                
+                \begin{equation*}
+                    \begin{aligned}
+                        \hphantom{\implies} & E(G) \subseteq E(H) \quad \text{ et } E(H) \subseteq E(G) \\
+                        \implies & E(G) \subseteq E(H) \subseteq E(G) \\
+                        \implies & E(G) = E(H).
+                    \end{aligned}
+                \end{equation*}
+
+                Ainsi, comme \(V(G) = V(H)\) et \(E(G) = E(H)\), on a bien \(G = H\).
+
+                \item Transitivité : soient \(G, H\) et \(I\) trois graphes tels que \(G\) est sous-graphe de \(H\) et \(H\) est sous-graphe de \(I\).
+                Alors, on a :
+                \begin{equation*}
+                    \begin{aligned}
+                        \hphantom{\implies} & V(G) \subseteq V(H) \quad \text{ et } V(H) \subseteq V(I) \\
+                        \implies & V(G) \subseteq V(H) \subseteq V(I) \\
+                        \implies & V(G) \subseteq V(I).
+                    \end{aligned}
+                \end{equation*}
+
+                De même, on a : 
+                
+                \begin{equation*}
+                    \begin{aligned}
+                        \hphantom{\implies} & E(G) \subseteq E(H) \quad \text{ et } E(H) \subseteq E(I) \\
+                        \implies & E(G) \subseteq E(H) \subseteq E(I) \\
+                        \implies & E(G) \subseteq E(I).
+                    \end{aligned}
+                \end{equation*}
+
+                Ainsi, comme \(V(G) \subseteq V(I)\) et \(E(G) \subseteq E(I)\), on a bien \(G\) sous-graphe de \(I\).
+            \end{enumerate}
+        \end{enumerate}
+    \end{td-sol}
+}{}
+
+\begin{proof}
     Soit \(H\) le sous graphe induit de \(G\) de degré moyen maximum et de nombre de sommets minimum pour cela.
 
     Si \(\delta(H) \geq k + 1\), on a gagné,
@@ -23,9 +99,9 @@ This is an example section. You can use this template as a starting point for yo
     \end{equation*}
     Et donc
     \begin{equation*}
-        \ol d(H \setmminus x) = 2 \frac{m(H \setminus x)}{n(H \setminus x)} \geq \ol d(H).
+        \ol d(H \setminus x) = 2 \frac{m(H \setminus x)}{n(H \setminus x)} \geq \ol d(H).
     \end{equation*}
 
     Si \(\ol d(H \setminus x) > \ol d(H)\) alors, on contredit le choix de \(H\).
     Si \(\ol d(H \setminus x) = \ol d(H)\) alors, on contredit le choix de \(H\) aussi, car \(H \setminus x\) a un sommet de moins que \(H\) (et est non nul).
-\end{preuve}
+\end{proof}
