@@ -1,0 +1,41 @@
+\vspace{2mm}
+\ffigbox[\FBwidth]{%
+\caption{\centering Illustration des graphes \(G\) et \(H\)}\label{fig:td1_ex1_fi1}
+}{%
+\tikzset{
+    main node/.style={
+    circle, 
+    draw, 
+    fill=blue!20, 
+    inner sep=1pt, 
+    font=\scriptsize, 
+    minimum size=6mm, 
+    text=black
+    }
+}%
+\begin{subfigure}[b]{0.4\linewidth}
+    \centering
+    \begin{tikzpicture}[scale=2]
+    \node[main node] (1) at (0,0) {\(a\)};
+    \node[main node] (2) at (1,0) {\(b\)};
+    \node[main node] (3) at (0,-1) {\(c\)};
+    \node[main node] (4) at (1,-1) {\(d\)};
+    \draw (1) -- (2);
+    \draw (3) -- (4);
+    \end{tikzpicture}
+    \caption{Graphe \(G\)}\label{fig:td1_ex1_fi1_sf1} 
+\end{subfigure}%
+\hfill
+\begin{subfigure}[b]{0.4\linewidth}
+    \centering
+    \begin{tikzpicture}[scale=2]
+    \node[main node] (1) at (0,0) {\(a\)};
+    \node[main node] (2) at (1,0) {\(b\)};
+    \node[main node] (3) at (0,-1) {\(c\)};
+    \node[main node] (4) at (1,-1) {\(d\)};
+    \draw (1) -- (2);
+    \draw (2) -- (3);
+    \end{tikzpicture}
+    \caption{Graphe \(H\)}\label{fig:td1_ex1_fi1_sf2}
+\end{subfigure}%
+}

@@ -1,2 +1,7 @@
+\newcounter{titles}
+% \counterwithin{tdcounter}{section}
+\counterwithout{titles}{section} 
+
 \theoremstyle{default}
-\mytheorem{definition}{Définition}{algebraic-amber}{subsection}{o}
+\mytheorem{definition}{Définition}{algebraic-amber}{titles}{o}
+\mytheorem{theorem}{Théorème}{astral}{titles}{o}

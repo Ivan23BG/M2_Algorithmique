@@ -74,14 +74,32 @@
             Ainsi, comme \(V(G) \subseteq V(I)\) et \(E(G) \subseteq E(I)\), on a bien \(G\) sous-graphe de \(I\).
         \end{enumerate}
 
-        \item On pose \(G = ([a, b, c, d], [(a, b), (c, d)])\) et \(H = ([a, b, c, d], [(a, b), (b, c)])\) comme dans la figure ci-dessous.
+        \item On pose \(G = ([a, b, c, d], [(a, b), (c, d)])\) et \(H = ([a, b, c, d], [(a, b), (b, c)])\) comme dans la figure ci-dessous :
         
-        % insert figure here
+        \input{./tikz/ex1_1.tex}
 
         On a \(n(G) = n(H)\) et \(m(G) = m(H)\) donc \(G \ll H\) et \(H \ll G\).
-        Pourtant, \(G \neq H\) donc la propriété d'antisymétrie n'est pas respectée et \(\ll\) ne définit donc pas un ordre sur les graphes.
+        Pourtant, \(G \neq H\) donc la propriété d'antisymétrie n'est pas respectée et \(\ll\) ne définit pas un ordre sur les graphes.
     \end{enumerate}
 \end{td-sol}
+
+\begin{td-exo}[Sous-graphe induit dense]\, % 2
+    Montrer que la borne donnée par le théorème du sous-graphe induit dense est optimale.
+\end{td-exo}
+
+\begin{td-sol}\,\\
+    On rappelle le théorème: 
+    \begin{theorem}[Sous-graphe induit dense]\,\\
+        Si le degré moyen d'un graphe \(G\) est \(\geq 2k\), alors \(G\) contient un sous-graphe induit \(F\) de degré minimum \(\geq k + 1\).
+    \end{theorem}
+\end{td-sol}
+
+
+
+
+
+
+
 
 \begin{proof}
     Soit \(H\) le sous graphe induit de \(G\) de degré moyen maximum et de nombre de sommets minimum pour cela.
