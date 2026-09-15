@@ -13,3 +13,100 @@ Plan du cours:
     Un \defemph{problème paramétré} est un langage \(L \subseteq \Sigma \times \bb N\) où \(\Sigma\) est un alphabet fini. 
     Pour une instance \((x, k) \in \Sigma \times \bb N\), \(k\) est le paramètre.
 \end{definition}
+
+
+
+
+% skip
+
+\begin{td-exo}[Couverture des arêtes par des cliques]\,\\
+    On considère le problème suivant, appelé ECC.
+    Etant donné un graphe \(G\) et un entier \(k\), le but est de déterminer si il existe \(k\) cliques telles que chaque arête du graphe est contenue dans au moins une de ces cliques.
+
+    Le but de l'exercice est de montrer l'existence d'un noyau pour ce problème avec au plus \(2^k\) sommets.
+    Pour tout sommet \(u\in V(G)\), on dénote \(N(u) = \left\{ v, uv \in E(G) \right\}\) et \(N[u] = N(u) \cup \left\{ u \right\}\).
+    On dit que \(u\) et \(v\) sont \defemph{jumeaux} si \(N[u] = N[v]\).
+    On suppose dans tout l'exercice que le graphe n'a pas de sommets isolés.
+
+    \begin{enumerate}
+        \item Soit \(V\) un ensemble de taille \(2^k + 1\) et \(C_1,\ldots,C_k\) des sous-ensembles de \(V\).
+        Montrer qu'il existe \(u, v \in V\) tels que pour tout \(i \in \left\{ 1,\ldots,k \right\}\), \(u \in C_i\) si et seulement si \(v \in C_i\).
+
+        \item Montrer que si \(u\) et \(v\) sont jumeaux, alors les instances \((G, k)\) et \((G \setminus u, k)\) sont équivalentes pour le problème ECC.
+
+        \item En déduire un algorithme de kernelisation avec au plus \(2^k\) sommets.
+    \end{enumerate}
+
+\end{td-exo}
+
+
+\begin{td-sol}
+    \begin{enumerate}
+        \item On pose \(X_V \in {\left\{0, 1\right\}}^k\) le vecteur de taille \(k\) défini par \(X_V[i] = 1\) si \(v \in C_i\) et \(0\) sinon.
+        Alors, on a \(2^k\) vecteurs différents de taille \(k\) et \(2^k + 1\) sommets.
+        Par le principe des tiroirs, il existe donc \(u, v \in V\) tels que \(X_u = X_v\).
+
+        \item Soit \(C_1,\ldots,C_k\) des cliques couvrant les arêtes de \(G\).
+        On pose
+        \begin{equation*}
+            C'_i = \begin{cases}
+                C_i \setminus \left\{ u \right\} & \text{si } u \in C_i,\\
+                C_i & \text{sinon.}
+            \end{cases}
+        \end{equation*}
+        Alors, \(C'_1,\ldots,C'_k\) sont des cliques couvrant les arêtes de \(G \setminus u\).
+        Réciproquement, soit \(C'_1,\ldots,C'_k\) des cliques couvrant les arêtes de \(G \setminus u\).
+        On pose
+        \begin{equation*}
+            C_i = \begin{cases}
+                C'_i \cup \left\{ u \right\} & \text{si } v \in C'_i,\\
+                C'_i & \text{sinon.}
+            \end{cases}
+        \end{equation*}
+        Alors, \(C_1,\ldots,C_k\) sont des cliques couvrant les arêtes de \(G\).
+    
+        \item On peut supprimer les sommets jumeaux du graphe jusqu'à ce qu'il ne reste plus que \(2^k\) sommets.
+        Ainsi, l'instance renvoyée par l'algorithme de kernelisation est équivalente à l'instance initiale et contient au plus \(2^k\) sommets.
+    \end{enumerate}
+\end{td-sol}
+
+\begin{td-exo}[Décomposition en couronne]\,\\
+    Une \defemph{décomposition en couronne} d'un graphe \(G\) est une partition de ses sommets en trois ensembles \(C, H, R\) telle que:
+    \begin{enumerate}[label=(\roman*)]
+        \item \(C\) est non vide,
+        \item \(C\) est un stable,
+        \item il n'y a pas d'arêtes entre \(C\) et \(R\),
+        \item l'ensemble des arêtes entre \(C\) et \(H\) contient un couplage de taille \(\left| H \right|\).
+    \end{enumerate}
+
+    \begin{enumerate}
+        \item Montrer que si \(G\) a un sommet de degré 1 alors il admet une décomposition en couronne.
+    \end{enumerate}
+    Soit \(G\) un graphe avec au moins \(3k + 1\) sommets, pour un certain \(k \in \bb N\) et sans sommets isolés.
+    Le but de cet exercice est de montrer que \(G\) admet soit un couplage de taille \(k+1\), soit une décomposition en couronne.
+    Soit \(M\) un couplage de \(G\) maximal pour l'inclusion \(\big(\)c'est-à-dire qu'il n'existe pas de couplage \(M'\) de \(G\) tel que \(M \subset M'\) et \(\left| M \right| < \left| M' \right|\big)\).
+    On dénote \(V_M \subset V(G)\) l'ensemble des sommets incidents à une arête de \(M\).
+    On dénote également \(I = V(G) \setminus V_M\).
+    On construit un graphe biparti \(B = (V_M, I, E')\) où \(E' \subset E(G)\) est l'ensemble des arêtes incidentes à un sommet de \(V_M\) et un sommet de \(I\).
+
+    % to have counter start at 2 use:
+    % \setcounter{enumi}{1}
+    % for local counter to start at 2 instead use:
+    % 
+    \begin{enumerate}[start=2]
+        \item Montrer que \(I\) est un stable de \(G\).
+    \end{enumerate}
+
+    Soit \(X \subset V(G)\) un vertex cover de taille minimum dans \(B\).
+
+    \begin{enumerate}[start=3]
+        \item Montrer en utilisant le théorème de König que si \(X \cap V_M = \varnothing\) alors \(X = 1\) et il existe un couplage de taille au moins \(k + 1\) dans \(G\).
+
+        \item On suppose maintenant que \(X \cap V_M \neq \varnothing\).
+        On pose \(H = X \cap V_M, C = I \setminus X\) et \(R = V(G) \setminus (X \cup H)\).
+        Montrer que \((C, H, R)\) est une décomposition en couronne de \(G\).
+        (Indication : considérer \(M'\) un couplage de taille maximum dans \(H\) et appliquer le théorème de König.)
+
+        \item Montrer qu'il existe un algorithme en temps polynomial, qui étant donné \(G\) calcule soit un couplage de taille au moins \(k + 1\), soit une décomposition en couronne.
+    \end{enumerate}
+\end{td-exo}
