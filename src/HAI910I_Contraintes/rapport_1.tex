@@ -1,3 +1,112 @@
-\section{Example section title}
+\section{TD1}
 
-This is an example section. You can use this template as a starting point for your own LaTeX documents. The preamble includes a variety of packages and custom commands to help you write mathematical content, code listings, and more.
+
+\begin{td-exo}
+    On a
+    \begin{equation*}
+        \begin{cases}
+            c_1 &\colon x_1 + x_2 = x_3 \\
+            c_2 &\colon x_1 < x_2
+        \end{cases}
+    \end{equation*}
+    avec
+    \begin{equation*}
+        \begin{cases}
+            D(x_1) &= \left\{1, 2, 3, 4, 5\right\} \\
+            D(x_2) &= \left\{1, 3, 5\right\} \\
+            D(x_3) &= \left\{1, 3, 4, 7\right\}.
+        \end{cases}
+    \end{equation*}
+
+    On trouve
+    \begin{equation*}
+        c_2 \colon (x_1, 5), (x_2, 1) \quad\text{et}\quad c_1 \colon (x_3, 1), (x_3, 3), (x_1, 3).
+    \end{equation*}
+
+    Après \(AC\), on a donc trouvé
+    \begin{equation*}
+        \begin{cases}
+            D(x_1) &= \left\{1, 2, 4\right\} \\
+            D(x_2) &= \left\{3, 5\right\} \\
+            D(x_3) &= \left\{4, 7\right\}.
+        \end{cases}
+    \end{equation*}
+\end{td-exo}
+
+\begin{td-exo}
+    On a
+    \begin{equation*}
+        \begin{cases}
+            c_1 &\colon 2x_1 = x_3 \\
+            c_2 &\colon x_1 < x_2 \\
+            c_3 &\colon x_3 + x_4 = 10 \\
+            c_4 &\colon x_3 < x_2
+        \end{cases}
+    \end{equation*}
+    avec
+    \begin{equation*}
+        \forall i \in \left\{1, 4\right\},\quad D(x_i) = \left\{1, \ldots, 8\right\}.
+    \end{equation*}
+
+    On trouve
+    \begin{equation*}
+        \begin{aligned}
+            c_1 &\colon (x_3, \left\{1, 3, 5, 7\right\}), (x_1, \left\{5, 6, 7, 8\right\}) \\
+            c_2 &\colon (x_2, 1) \\
+            c_3 &\colon (x_4, \left\{1, 3, 5, 7\right\}).
+            c_4 &\colon (x_3, 8), (x_2, 2).
+        \end{aligned}
+    \end{equation*}
+
+    Après \(AC\), on a donc trouvé
+    \begin{equation*}
+        \begin{cases}
+            D(x_1) &= \left\{1, 2, 3\right\} \\
+            D(x_2) &= \left\{3, \ldots, 7\right\} \\
+            D(x_3) &= \left\{2, 4, 6\right\} \\
+            D(x_4) &= \left\{4, 6, 8\right\}.
+        \end{cases}
+    \end{equation*}
+\end{td-exo}
+
+\begin{td-exo}
+    On a
+    \begin{equation*}
+        \begin{cases}
+            c_1 &\colon x_1 + x_4 = 10 - 5x_5 \\
+            c_2 &\colon |x_1 - x_2| = |x_3 - x_4| \\
+            c_3 &\colon x_3 = 2x_2
+        \end{cases}
+    \end{equation*}
+    avec
+    \begin{equation*}
+        \begin{cases}
+            D(x_1) &= \left\{1, 2, 7,  8\right\} \\
+            D(x_2) &= \left\{1, 2, 7,  8\right\} \\
+            D(x_3) &= \left\{1, 2, 3, 4\right\} \\
+            D(x_4) &= \left\{1, 2, 3, 4\right\} \\
+            D(x_4) &= \left\{0, 1\right\}.
+        \end{cases}
+    \end{equation*}
+
+    On trouve
+    \begin{equation*}
+        \begin{aligned}
+            c_1 &\colon (x_1, \left\{5, 6, 7, 8\right\}), (x_3, \left\{1, 3, 5, 7\right\})
+            c_2 &\colon (x_2, 1) \\
+            c_3 &\colon (x_4, \left\{1, 3, 5, 7\right\}).
+            c_4 &\colon (x_3, 8), (x_2, 2).
+        \end{aligned}
+    \end{equation*}
+
+    Après \(AC\), on a donc trouvé
+    \begin{equation*}
+        \begin{cases}
+            D(x_1) &= \left\{1, 2\right\} \\
+            D(x_2) &= \left\{1, 2\right\} \\
+            D(x_3) &= \left\{2, 4\right\} \\
+            D(x_4) &= \left\{3, 4\right\} \\
+            D(x_5) &= \left\{1\right\}.
+        \end{cases}
+    \end{equation*}
+\end{td-exo}
