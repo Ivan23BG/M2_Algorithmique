@@ -1,27 +1,8 @@
-\section{Example section title}
-
-This is an example section. You can use this template as a starting point for your own LaTeX documents. The preamble includes a variety of packages and custom commands to help you write mathematical content, code listings, and more.
-
-Plan du cours: 
-\begin{itemize}
-    \item Algorithmes paramétrés: 4 ou 5 séances,
-    \item Algorithmes en-ligne: 3 à 4 séances,
-    \item Algorithmes distribués: ce qui reste.
-\end{itemize}
-
-\begin{definition}
-    Un \defemph{problème paramétré} est un langage \(L \subseteq \Sigma \times \bb N\) où \(\Sigma\) est un alphabet fini. 
-    Pour une instance \((x, k) \in \Sigma \times \bb N\), \(k\) est le paramètre.
-\end{definition}
-
-
-
-
-% skip
+\section{TD1 --- Noyaux}
 
 \begin{td-exo}[Couverture des arêtes par des cliques]\,\\
     On considère le problème suivant, appelé ECC.
-    Etant donné un graphe \(G\) et un entier \(k\), le but est de déterminer si il existe \(k\) cliques telles que chaque arête du graphe est contenue dans au moins une de ces cliques.
+    Étant donné un graphe \(G\) et un entier \(k\), le but est de déterminer s'il existe \(k\) cliques \(C_1,\ldots, C_k\) telles que pour chaque arête \(e\) du graphe, il existe \(i\) tel que \(e \in C_i\).
 
     Le but de l'exercice est de montrer l'existence d'un noyau pour ce problème avec au plus \(2^k\) sommets.
     Pour tout sommet \(u\in V(G)\), on dénote \(N(u) = \left\{ v, uv \in E(G) \right\}\) et \(N[u] = N(u) \cup \left\{ u \right\}\).
@@ -70,8 +51,8 @@ Plan du cours:
     \end{enumerate}
 \end{td-sol}
 
-\begin{td-exo}[Décomposition en couronne]\,\\
-    Une \defemph{décomposition en couronne} d'un graphe \(G\) est une partition de ses sommets en trois ensembles \(C, H, R\) telle que:
+\begin{td-exo}[Décomposition en couronne : démonstration]\,\\
+    Une \defemph{décomposition en couronne} d'un graphe \(G\) est une partition de ses sommets en trois ensembles \(C, H, R\) telle que :
     \begin{enumerate}[label=(\roman*)]
         \item \(C\) est non vide,
         \item \(C\) est un stable,
@@ -80,7 +61,7 @@ Plan du cours:
     \end{enumerate}
 
     \begin{enumerate}
-        \item Montrer que si \(G\) a un sommet de degré 1 alors il admet une décomposition en couronne.
+        \item Montrer que si \(G\) a un sommet de degré 1 alors, il admet une décomposition en couronne.
     \end{enumerate}
     Soit \(G\) un graphe avec au moins \(3k + 1\) sommets, pour un certain \(k \in \bb N\) et sans sommets isolés.
     Le but de cet exercice est de montrer que \(G\) admet soit un couplage de taille \(k+1\), soit une décomposition en couronne.
@@ -115,8 +96,62 @@ Plan du cours:
     Soit \(G\) un graphe et \(x\) un sommet tel que \(d_G(x) = 1\).
     On note \(y\) le voisin de \(x\).
 
-    On définit les ensembles suivants:
+    On définit les ensembles suivants :
     \begin{equation*}
-        C = \{x\}, \quad H = \{y\}, \quad R = G \setminus \left\{x, y\right\}
+        C = \{x\}, \quad H = \{y\}, \quad R = G \setminus \left\{x, y\right\}.
     \end{equation*}
 \end{td-sol}
+
+\begin{td-exo}[Décomposition en couronne : application au Vertex Cover]\,\\
+    En utilisant la décomposition en couronne, construire un noyau pour Vertex Cover avec au plus \(3k\) sommets.\\
+    \textit{Indication : généraliser la réduction vue en cours pour les sommets de degré 1.}
+\end{td-exo}
+
+\begin{td-exo}[Décomposition en couronne : application à SAT]\,\\
+    Le but de l'exercice est de construire un noyau linéaire pour SAT basé sur la décomposition en couronne.
+    Étant donné une formule sous forme normale conjonctive et un entier \(k\), le but est de décider s'il existe une affectation satisfaisant au moins \(k\) clauses.
+    Soit \(\varphi\) une formule en forme normale conjonctive avec \(n\) variables et \(m\) clauses.
+    \begin{enumerate}
+        \item Montrer que si \(m\geq 2k\), alors l'instance est positive.
+        
+        \item Pour tout sous-ensemble \(X\) de variables, on note \(C(X)\) l'ensemble des clauses dans lesquelles au moins variable de \(X\) apparaît.
+        Supposons qu'il existe un sous-ensemble non vide \(C\) de clauses tel que :
+        \begin{enumerate}
+            \item il existe un ensemble \(X\) de variables avec \(|X| > |C|\) tel que \(C(X) = C\) et
+            \item pour tout \(X' \subsetneq X\), on a \(|C(X')| \geq |X'|\).
+        \end{enumerate}
+        Montrer en utilisant le théorème de Hall que pour toute affectation qui satisfait un nombre maximal de clauses, toutes les clauses de \(C\) sont satisfaites.
+
+        \item Montrer grâce au théorème de Hall que tout graphe biparti admet une décomposition en couronne.
+
+        \item Construire un noyau pour SAT avec au plus \(2k\) clauses et au plus \(k\) variables.
+    \end{enumerate}
+\end{td-exo}
+
+\begin{td-exo}[Lemme du tournesol]\,\\
+    On appelle \(d\)-HITTING le problème suivant.
+    Soit \(\mathcal{A}\) une famille d'ensembles sur un univers \(U\) telle que chaque ensemble contient au plus \(d\) éléments et soit \(k\) un paramètre.
+    Le but est de décider s'il existe un ensemble \(H \subset U\) de cardinal au plus \(k\) tel que pour tout \(S\in A\), on a \(S\cap H \neq \varnothing\).
+    Noter que pour \(d=2\), le problème est équivalent à Vertex Cover.
+    Le but de l'exercice est de construire un noyau pour \(d\)-HITTING en utilisation un lemme d'Erdős-Rado, aussi appelé le \emph{lemme du tournesol}.
+    Un \defemph{tournesol à \(k\) pétales et de capitule \(Y\)} est une collection de \(k\) ensembles \(S_1,\ldots S_k\) telle que
+    \begin{enumerate}[label=\roman*)]
+        \item pour tout \(i\neq j\), on a \(S_i \cap S_j = Y\),
+        \item les ensembles \(S_i \setminus Y\) (appelés pétales) sont non vides.
+    \end{enumerate}
+
+    \begin{lemma}[du tournesol]\,\\
+        Soit \(\mathcal{A}\) une famille d'ensembles sur un univers U, telle que chaque ensemble de \(\mathcal A\) contient au plus \(d\) éléments.
+        Si \(|\mathcal{A}| > d ! {(k-1)}^d\) alors \(\mathcal{A}\) contient un tournesol à \(k\) pétales.
+    \end{lemma}\vspace{1mm}
+
+    On pourra commencer par traiter la troisième question en admettant les résultats des deux premières.
+
+    \begin{enumerate}
+        \item Démontrer le lemme par récurrence sur \(d\).
+
+        \item Montrer que le tournesol du Lemme du tournesol peut être calculé en temps polynomial en \(|\mathcal{A}|, |U|\) et \(k\).
+
+        \item En déduire un noyau pour \(d\)-HITTING avec au plus \(d! k^d\) ensembles.
+    \end{enumerate}
+\end{td-exo}
