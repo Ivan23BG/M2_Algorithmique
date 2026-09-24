@@ -1,9 +1,9 @@
-\section{Mineurs de graphes}
+\section{Mineurs de graphes}\label{sec:mineurs-de-graphes}
 
 \begin{td-exo}[Ordres graphiques]\, % 1
     \begin{enumerate}
         \item Montrer que la relation de sous-graphe forme un ordre sur les graphes.
-        \item On définit la relation suivante sur les graphes :
+        \item On d\'efinit la relation suivante sur les graphes :
         \begin{equation*}
             G \ll G' \text{ si } n(G) \leq n(G') \quad\text{ et } m(G) \leq m(G').
         \end{equation*}
@@ -13,23 +13,23 @@
 
 \begin{td-sol}[]\, % 1
     \begin{enumerate}
-        \item On rappelle la définition d'un ordre :
+        \item On rappelle la d\'efinition d'un ordre :
         
         \begin{definition}
-            Soit \(E\) un ensemble et \(\mathcal{R}\) une relation entre deux éléments de \(E\).
-            On dit que \(\mathcal{R}\) est une \defemph{relation d'ordre} sur \(E\) si elle vérifie les propriétés suivantes :
+            Soit \(E\) un ensemble et \(\mathcal{R}\) une relation entre deux \'el\'ements de \(E\).
+            On dit que \(\mathcal{R}\) est une \defemph{relation d'ordre} sur \(E\) si elle v\'erifie les propri\'et\'es suivantes :
             \begin{enumerate}[label=\roman*)]
-                \item Réflexivité : pour tout \(x \in E\), on a \(x\mathcal{R}x\).
-                \item Antisymétrie : pour tous \(x,y\in E\), si \(x\mathcal{R}y\) et \(y\mathcal{R}x\) alors \(x = y\).
-                \item Transitivité : pour tous \(x,y,z\in E\), si \(x\mathcal{R}y\) et \(y\mathcal{R}z\) alors \(x\mathcal{R}z\).
+                \item R\'eflexivit\'e : pour tout \(x \in E\), on a \(x\mathcal{R}x\).
+                \item Antisym\'etrie : pour tous \(x,y\in E\), si \(x\mathcal{R}y\) et \(y\mathcal{R}x\) alors \(x = y\).
+                \item Transitivit\'e : pour tous \(x,y,z\in E\), si \(x\mathcal{R}y\) et \(y\mathcal{R}z\) alors \(x\mathcal{R}z\).
             \end{enumerate}
         \end{definition}
 
-        Vérifions alors ces propriétés sur la relation de sous-graphe :
+        V\'erifions alors ces propri\'et\'es sur la relation de sous-graphe :
         \begin{enumerate}
-            \item Réflexivité : pour tout graphe \(G\) on a bien \(V(G) \subseteq V(G)\) et \(E(G) \subseteq E(G)\) donc \(G\) est bien sous-graphe de \(G\).
+            \item R\'eflexivit\'e : pour tout graphe \(G\) on a bien \(V(G) \subseteq V(G)\) et \(E(G) \subseteq E(G)\) donc \(G\) est bien sous-graphe de \(G\).
 
-            \item Antisymétrie : soient \(G\) et \(H\) deux graphes tels que \(G\) est sous-graphe de \(H\) et \(H\) est sous-graphe de \(G\).
+            \item Antisym\'etrie : soient \(G\) et \(H\) deux graphes tels que \(G\) est sous-graphe de \(H\) et \(H\) est sous-graphe de \(G\).
             On a :
             \begin{equation*}
                 \begin{aligned}
@@ -39,7 +39,7 @@
                 \end{aligned}
             \end{equation*}
 
-            De même, on a : 
+            De m\^eme, on a :
             
             \begin{equation*}
                 \begin{aligned}
@@ -51,7 +51,7 @@
 
             Ainsi, comme \(V(G) = V(H)\) et \(E(G) = E(H)\), on a bien \(G = H\).
 
-            \item Transitivité : soient \(G, H\) et \(I\) trois graphes tels que \(G\) est sous-graphe de \(H\) et \(H\) est sous-graphe de \(I\).
+            \item Transitivit\'e : soient \(G, H\) et \(I\) trois graphes tels que \(G\) est sous-graphe de \(H\) et \(H\) est sous-graphe de \(I\).
             Alors, on a :
             \begin{equation*}
                 \begin{aligned}
@@ -61,7 +61,7 @@
                 \end{aligned}
             \end{equation*}
 
-            De même, on a : 
+            De m\^eme, on a :
             
             \begin{equation*}
                 \begin{aligned}
@@ -76,55 +76,55 @@
 
         \item On pose \(G = ([a, b, c, d], [(a, b), (c, d)])\) et \(H = ([a, b, c, d], [(a, b), (b, c)])\) comme dans la figure ci-dessous :
         
-        \input{./tikz/ex1_1.tex}
+        \input{./tikz/ex1_1}
 
         On a \(n(G) = n(H)\) et \(m(G) = m(H)\) donc \(G \ll H\) et \(H \ll G\).
-        Pourtant, \(G \neq H\) donc la propriété d'antisymétrie n'est pas respectée et \(\ll\) ne définit pas un ordre sur les graphes.
+        Pourtant, \(G \neq H\) donc la propri\'et\'e d'antisym\'etrie n'est pas respect\'ee et \(\ll\) ne d\'efinit pas un ordre sur les graphes.
     \end{enumerate}
 \end{td-sol}
 
 \begin{td-exo}[Sous-graphe induit dense]\, % 2
-    Montrer que la borne donnée par le théorème du sous-graphe induit dense est optimale.
+    Montrer que la borne donn\'ee par le th\'eor\`eme du sous-graphe induit dense est optimale.
 \end{td-exo}
 
 \begin{td-sol}\,\\
-    On rappelle le théorème : 
+    On rappelle le th\'eor\`eme :
     \begin{theorem}[Sous-graphe induit dense]\,\\
-        Si le degré moyen d'un graphe \(G\) est \(\geq 2k\), alors \(G\) contient un sous-graphe induit \(F\) de degré minimum \(\geq k + 1\).
+        Si le degr\'e moyen d'un graphe \(G\) est \(\geq 2k\), alors \(G\) contient un sous-graphe induit \(F\) de degr\'e minimum \(\geq k + 1\).
     \end{theorem}
 
     Soit \(G\) un cycle de longueur \(n\).
     Alors, on a \(\ol d(G) = 2k = 2 \times 1\).
-    On peut bien trouver un sous-graphe induit \(F\) de degré minimum \(\geq k + 1 = 2\) (par exemple, le cycle lui-même) mais il n'existe pas de sous-graphe induit \(F\) de degré minimum \(\geq k + 2 = 3\), car tous les sommets du cycle ont un degré de \(2\).
+    On peut bien trouver un sous-graphe induit \(F\) de degr\'e minimum \(\geq k + 1 = 2\) (par exemple, le cycle lui-m\^eme) mais il n'existe pas de sous-graphe induit \(F\) de degr\'e minimum \(\geq k + 2 = 3\), car tous les sommets du cycle ont un degr\'e de \(2\).
 
     La borne est donc optimale.
 
-    On peut aussi construire un exemple plus général.
-    On construit \(G\) de la manière suivante :
+    On peut aussi construire un exemple plus g\'en\'eral.
+    On construit \(G\) de la mani\`ere suivante :
     \begin{itemize}
-        \item On prend un graphe complet \(K_{k + 1}\) de degré moyen \(k\).
-        \item On ajoute au graphe un stable de taille \(M\) et on crée le biparti complet entre le stable et le graphe complet.
+        \item On prend un graphe complet \(K_{k + 1}\) de degr\'e moyen \(k\).
+        \item On ajoute au graphe un stable de taille \(M\) et on cr\'ee le biparti complet entre le stable et le graphe complet.
     \end{itemize}
-    On obtient alors un graphe \(G\) de degré total 
+    On obtient alors un graphe \(G\) de degr\'e total
     \begin{equation*}
         \left(k+1\right)\left(k+M\right) + M\left(k+1\right) = \left(k+1\right)\left(k+2M\right)
     \end{equation*}
-    et de degré moyen 
+    et de degr\'e moyen
     \begin{equation*}
         \frac{\left(k+1\right)\left(k+2M\right)}{k+1+M}.
     \end{equation*}
-    En développant, on trouve que pour \(M \geq \frac{k^2 + k}{2}\), on a bien \(\ol d(G) \geq 2k\).
-    Comme le graphe complet \(K_{k + 1}\) est un sous-graphe induit de \(G\), on a bien un sous-graphe induit de degré minimum \(\geq k + 1\), mais il n'existe pas de sous-graphe induit de degré minimum \(\geq k + 2\), car tous les sommets du stable ont un degré de \(k + 1\).
+    En d\'eveloppant, on trouve que pour \(M \geq \frac{k^2 + k}{2}\), on a bien \(\ol d(G) \geq 2k\).
+    Comme le graphe complet \(K_{k + 1}\) est un sous-graphe induit de \(G\), on a bien un sous-graphe induit de degr\'e minimum \(\geq k + 1\), mais il n'existe pas de sous-graphe induit de degr\'e minimum \(\geq k + 2\), car tous les sommets du stable ont un degr\'e de \(k + 1\).
 \end{td-sol}
 
 \begin{td-exo}[Gros sous-graphe couvrant biparti]\, % 3
-    Montrer que tout graphe \(G\) contient un sous-graphe biparti couvrant \(H\) avec \(m(H) \geq m(G)/2\) (on pourra ordonner les sommets de \(G\) en \(v_1,\ldots,v_n\) et construire la bipartition \(X, Y\) de \(H\) en plaçant \(v_i\) dans \(X\) ou \(Y\) en fonction des \(v_j\) pour \(j < i\)).
+    Montrer que tout graphe \(G\) contient un sous-graphe biparti couvrant \(H\) avec \(m(H) \geq m(G)/2\) (on pourra ordonner les sommets de \(G\) en \(v_1,\ldots,v_n\) et construire la bipartition \(X, Y\) de \(H\) en pla\c cant \(v_i\) dans \(X\) ou \(Y\) en fonction des \(v_j\) pour \(j < i\)).
 \end{td-exo}
 
 \begin{td-sol}\,\\
-    Soit \(H\) le sous graphe induit de \(G\) de degré moyen maximum et de nombre de sommets minimum pour cela.
+    Soit \(H\) le sous graphe induit de \(G\) de degr\'e moyen maximum et de nombre de sommets minimum pour cela.
 
-    Si \(\delta(H) \geq k + 1\), on a gagné,
+    Si \(\delta(H) \geq k + 1\), on a gagn\'e,
 
     Sinon, \(H\) contient \(x\) avec \(d_H(x) \leq k\).
 
@@ -149,8 +149,8 @@
     Si \(\ol d(H \setminus x) = \ol d(H)\) alors, on contredit le choix de \(H\) aussi, car \(H \setminus x\) a un sommet de moins que \(H\) (et est non nul).
 \end{td-sol}
 
-\begin{td-exo}[Complexité de sous-graphe]\,\\
-    Quelle est la complexité du problème algorithmique suivant, le graphe \(H\) étant fixé ?
+\begin{td-exo}[Complexit\'e de sous-graphe]\,\\
+    Quelle est la complexit\'e du probl\`eme algorithmique suivant, le graphe \(H\) \'etant fix\'e ?
     % insert algo 1 here
 
     Et de celui-ci ?
