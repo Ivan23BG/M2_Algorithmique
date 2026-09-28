@@ -1,21 +1,21 @@
-\section{TD1 --- Noyaux}
+\section{TD1 --- Noyaux}\label{sec:td1-noyaux}
 
-\begin{td-exo}[Couverture des arêtes par des cliques]\,\\
-    On considère le problème suivant, appelé ECC.
-    Étant donné un graphe \(G\) et un entier \(k\), le but est de déterminer s'il existe \(k\) cliques \(C_1,\ldots, C_k\) telles que pour chaque arête \(e\) du graphe, il existe \(i\) tel que \(e \in C_i\).
+\begin{td-exo}[Couverture des ar\^etes par des cliques]\,\\
+    On consid\`ere le probl\`eme suivant, appel\'e ECC.
+    \'eEtant donn\'e un graphe \(G\) et un entier \(k\), le but est de d\'eterminer s'il existe \(k\) cliques \(C_1,\ldots, C_k\) telles que pour chaque ar\^ete \(e\) du graphe, il existe \(i\) tel que \(e \in C_i\).
 
-    Le but de l'exercice est de montrer l'existence d'un noyau pour ce problème avec au plus \(2^k\) sommets.
-    Pour tout sommet \(u\in V(G)\), on dénote \(N(u) = \left\{ v, uv \in E(G) \right\}\) et \(N[u] = N(u) \cup \left\{ u \right\}\).
+    Le but de l'exercice est de montrer l'existence d'un noyau pour ce probl\`eme avec au plus \(2^k\) sommets.
+    Pour tout sommet \(u\in V(G)\), on d\'enote \(N(u) = \left\{ v, uv \in E(G) \right\}\) et \(N[u] = N(u) \cup \left\{ u \right\}\).
     On dit que \(u\) et \(v\) sont \defemph{jumeaux} si \(N[u] = N[v]\).
-    On suppose dans tout l'exercice que le graphe n'a pas de sommets isolés.
+    On suppose dans tout l'exercice que le graphe n'a pas de sommets isol\'es.
 
     \begin{enumerate}
         \item Soit \(V\) un ensemble de taille \(2^k + 1\) et \(C_1,\ldots,C_k\) des sous-ensembles de \(V\).
         Montrer qu'il existe \(u, v \in V\) tels que pour tout \(i \in \left\{ 1,\ldots,k \right\}\), \(u \in C_i\) si et seulement si \(v \in C_i\).
 
-        \item Montrer que si \(u\) et \(v\) sont jumeaux, alors les instances \((G, k)\) et \((G \setminus u, k)\) sont équivalentes pour le problème ECC.
+        \item Montrer que si \(u\) et \(v\) sont jumeaux, alors les instances \((G, k)\) et \((G \setminus u, k)\) sont \'equivalentes pour le probl\`eme ECC.
 
-        \item En déduire un algorithme de kernelisation avec au plus \(2^k\) sommets.
+        \item En d\'eduire un algorithme de kernelisation avec au plus \(2^k\) sommets.
     \end{enumerate}
 
 \end{td-exo}
@@ -23,11 +23,11 @@
 
 \begin{td-sol}
     \begin{enumerate}
-        \item On pose \(X_V \in {\left\{0, 1\right\}}^k\) le vecteur de taille \(k\) défini par \(X_V[i] = 1\) si \(v \in C_i\) et \(0\) sinon.
-        Alors, on a \(2^k\) vecteurs différents de taille \(k\) et \(2^k + 1\) sommets.
+        \item On pose \(X_V \in {\left\{0, 1\right\}}^k\) le vecteur de taille \(k\) d\'efini par \(X_V[i] = 1\) si \(v \in C_i\) et \(0\) sinon.
+        Alors, on a \(2^k\) vecteurs diff\'erents de taille \(k\) et \(2^k + 1\) sommets.
         Par le principe des tiroirs, il existe donc \(u, v \in V\) tels que \(X_u = X_v\).
 
-        \item Soit \(C_1,\ldots,C_k\) des cliques couvrant les arêtes de \(G\).
+        \item Soit \(C_1,\ldots,C_k\) des cliques couvrant les ar\^etes de \(G\).
         On pose
         \begin{equation*}
             C'_i = \begin{cases}
@@ -35,8 +35,8 @@
                 C_i & \text{sinon.}
             \end{cases}
         \end{equation*}
-        Alors, \(C'_1,\ldots,C'_k\) sont des cliques couvrant les arêtes de \(G \setminus u\).
-        Réciproquement, soit \(C'_1,\ldots,C'_k\) des cliques couvrant les arêtes de \(G \setminus u\).
+        Alors, \(C'_1,\ldots,C'_k\) sont des cliques couvrant les ar\^etes de \(G \setminus u\).
+        R\'eciproquement, soit \(C'_1,\ldots,C'_k\) des cliques couvrant les ar\^etes de \(G \setminus u\).
         On pose
         \begin{equation*}
             C_i = \begin{cases}
@@ -44,31 +44,31 @@
                 C'_i & \text{sinon.}
             \end{cases}
         \end{equation*}
-        Alors, \(C_1,\ldots,C_k\) sont des cliques couvrant les arêtes de \(G\).
+        Alors, \(C_1,\ldots,C_k\) sont des cliques couvrant les ar\^etes de \(G\).
     
-        \item On peut supprimer les sommets jumeaux du graphe jusqu'à ce qu'il ne reste plus que \(2^k\) sommets.
-        Ainsi, l'instance renvoyée par l'algorithme de kernelisation est équivalente à l'instance initiale et contient au plus \(2^k\) sommets.
+        \item On peut supprimer les sommets jumeaux du graphe jusqu'\`a ce qu'il ne reste plus que \(2^k\) sommets.
+        Ainsi, l'instance renvoy\'e par l'algorithme de kernelisation est \'equivalente \`a l'instance initiale et contient au plus \(2^k\) sommets.
     \end{enumerate}
 \end{td-sol}
 
-\begin{td-exo}[Décomposition en couronne : démonstration]\,\\
-    Une \defemph{décomposition en couronne} d'un graphe \(G\) est une partition de ses sommets en trois ensembles \(C, H, R\) telle que :
+\begin{td-exo}[D\'ecomposition en couronne : d\'emonstration]\,\\
+    Une \defemph{d\'ecomposition en couronne} d'un graphe \(G\) est une partition de ses sommets en trois ensembles \(C, H, R\) telle que :
     \begin{enumerate}[label=(\roman*)]
         \item \(C\) est non vide,
         \item \(C\) est un stable,
-        \item il n'y a pas d'arêtes entre \(C\) et \(R\),
-        \item l'ensemble des arêtes entre \(C\) et \(H\) contient un couplage de taille \(\left| H \right|\).
+        \item il n'y a pas d'ar\^etes entre \(C\) et \(R\),
+        \item l'ensemble des ar\^etes entre \(C\) et \(H\) contient un couplage de taille \(\left| H \right|\).
     \end{enumerate}
 
     \begin{enumerate}
-        \item Montrer que si \(G\) a un sommet de degré 1 alors, il admet une décomposition en couronne.
+        \item Montrer que si \(G\) a un sommet de degr\'e 1 alors, il admet une d\'ecomposition en couronne.
     \end{enumerate}
-    Soit \(G\) un graphe avec au moins \(3k + 1\) sommets, pour un certain \(k \in \bb N\) et sans sommets isolés.
-    Le but de cet exercice est de montrer que \(G\) admet soit un couplage de taille \(k+1\), soit une décomposition en couronne.
-    Soit \(M\) un couplage de \(G\) maximal pour l'inclusion \(\big(\)c'est-à-dire qu'il n'existe pas de couplage \(M'\) de \(G\) tel que \(M \subset M'\) et \(\left| M \right| < \left| M' \right|\big)\).
-    On dénote \(V_M \subset V(G)\) l'ensemble des sommets incidents à une arête de \(M\).
-    On dénote également \(I = V(G) \setminus V_M\).
-    On construit un graphe biparti \(B = (V_M, I, E')\) où \(E' \subset E(G)\) est l'ensemble des arêtes incidentes à un sommet de \(V_M\) et un sommet de \(I\).
+    Soit \(G\) un graphe avec au moins \(3k + 1\) sommets, pour un certain \(k \in \bb N\) et sans sommets isol\'es.
+    Le but de cet exercice est de montrer que \(G\) admet soit un couplage de taille \(k+1\), soit une d\'ecomposition en couronne.
+    Soit \(M\) un couplage de \(G\) maximal pour l'inclusion \(\big(\)c'est-\`a-dire qu'il n'existe pas de couplage \(M'\) de \(G\) tel que \(M \subset M'\) et \(\left| M \right| < \left| M' \right|\big)\).
+    On d\'enote \(V_M \subset V(G)\) l'ensemble des sommets incidents \`a une ar\^ete de \(M\).
+    On d\'enote \'egalement \(I = V(G) \setminus V_M\).
+    On construit un graphe biparti \(B = (V_M, I, E')\) o\`u \(E' \subset E(G)\) est l'ensemble des ar\^etes incidentes \`a un sommet de \(V_M\) et un sommet de \(I\).
 
     % to have counter start at 2 use:
     % \setcounter{enumi}{1}
@@ -81,14 +81,14 @@
     Soit \(X \subset V(G)\) un vertex cover de taille minimum dans \(B\).
 
     \begin{enumerate}[start=3]
-        \item Montrer en utilisant le théorème de König que si \(X \cap V_M = \varnothing\) alors \(X = 1\) et il existe un couplage de taille au moins \(k + 1\) dans \(G\).
+        \item Montrer en utilisant le th\'eor\`eme de K\"onig que si \(X \cap V_M = \varnothing\) alors \(X = 1\) et il existe un couplage de taille au moins \(k + 1\) dans \(G\).
 
         \item On suppose maintenant que \(X \cap V_M \neq \varnothing\).
         On pose \(H = X \cap V_M, C = I \setminus X\) et \(R = V(G) \setminus (X \cup H)\).
-        Montrer que \((C, H, R)\) est une décomposition en couronne de \(G\).
-        (Indication : considérer \(M'\) un couplage de taille maximum dans \(H\) et appliquer le théorème de König.)
+        Montrer que \((C, H, R)\) est une d\'ecomposition en couronne de \(G\).
+        (Indication : consid\'erer \(M'\) un couplage de taille maximum dans \(H\) et appliquer le th\'eor\`eme de K\"onig.)
 
-        \item Montrer qu'il existe un algorithme en temps polynomial, qui étant donné \(G\) calcule soit un couplage de taille au moins \(k + 1\), soit une décomposition en couronne.
+        \item Montrer qu'il existe un algorithme en temps polynomial, qui \'etant donn\'e \(G\) calcule soit un couplage de taille au moins \(k + 1\), soit une d\'ecomposition en couronne.
     \end{enumerate}
 \end{td-exo}
 
@@ -96,62 +96,62 @@
     Soit \(G\) un graphe et \(x\) un sommet tel que \(d_G(x) = 1\).
     On note \(y\) le voisin de \(x\).
 
-    On définit les ensembles suivants :
+    On d\'efinit les ensembles suivants :
     \begin{equation*}
         C = \{x\}, \quad H = \{y\}, \quad R = G \setminus \left\{x, y\right\}.
     \end{equation*}
 \end{td-sol}
 
-\begin{td-exo}[Décomposition en couronne : application au Vertex Cover]\,\\
-    En utilisant la décomposition en couronne, construire un noyau pour Vertex Cover avec au plus \(3k\) sommets.\\
-    \textit{Indication : généraliser la réduction vue en cours pour les sommets de degré 1.}
+\begin{td-exo}[D\'ecomposition en couronne : application au Vertex Cover]\,\\
+    En utilisant la d\'ecomposition en couronne, construire un noyau pour Vertex Cover avec au plus \(3k\) sommets.\\
+    \textit{Indication : g\'en\'eraliser la r\'eduction vue en cours pour les sommets de degr\'e 1.}
 \end{td-exo}
 
-\begin{td-exo}[Décomposition en couronne : application à SAT]\,\\
-    Le but de l'exercice est de construire un noyau linéaire pour SAT basé sur la décomposition en couronne.
-    Étant donné une formule sous forme normale conjonctive et un entier \(k\), le but est de décider s'il existe une affectation satisfaisant au moins \(k\) clauses.
+\begin{td-exo}[D\'ecomposition en couronne : application \`a SAT]\,\\
+    Le but de l'exercice est de construire un noyau lin\'eaire pour SAT bas\'e sur la d\'ecomposition en couronne.
+    \'Etant donn\'e une formule sous forme normale conjonctive et un entier \(k\), le but est de d\'ecider s'il existe une affectation satisfaisant au moins \(k\) clauses.
     Soit \(\varphi\) une formule en forme normale conjonctive avec \(n\) variables et \(m\) clauses.
     \begin{enumerate}
         \item Montrer que si \(m\geq 2k\), alors l'instance est positive.
         
-        \item Pour tout sous-ensemble \(X\) de variables, on note \(C(X)\) l'ensemble des clauses dans lesquelles au moins variable de \(X\) apparaît.
+        \item Pour tout sous-ensemble \(X\) de variables, on note \(C(X)\) l'ensemble des clauses dans lesquelles au moins variable de \(X\) appara\^it.
         Supposons qu'il existe un sous-ensemble non vide \(C\) de clauses tel que :
         \begin{enumerate}
             \item il existe un ensemble \(X\) de variables avec \(|X| > |C|\) tel que \(C(X) = C\) et
             \item pour tout \(X' \subsetneq X\), on a \(|C(X')| \geq |X'|\).
         \end{enumerate}
-        Montrer en utilisant le théorème de Hall que pour toute affectation qui satisfait un nombre maximal de clauses, toutes les clauses de \(C\) sont satisfaites.
+        Montrer en utilisant le th\'eor\`eme de Hall que pour toute affectation qui satisfait un nombre maximal de clauses, toutes les clauses de \(C\) sont satisfaites.
 
-        \item Montrer grâce au théorème de Hall que tout graphe biparti admet une décomposition en couronne.
+        \item Montrer gr\^ace au th\'eor\`eme de Hall que tout graphe biparti admet une d\'ecomposition en couronne.
 
         \item Construire un noyau pour SAT avec au plus \(2k\) clauses et au plus \(k\) variables.
     \end{enumerate}
 \end{td-exo}
 
 \begin{td-exo}[Lemme du tournesol]\,\\
-    On appelle \(d\)-HITTING le problème suivant.
-    Soit \(\mathcal{A}\) une famille d'ensembles sur un univers \(U\) telle que chaque ensemble contient au plus \(d\) éléments et soit \(k\) un paramètre.
-    Le but est de décider s'il existe un ensemble \(H \subset U\) de cardinal au plus \(k\) tel que pour tout \(S\in A\), on a \(S\cap H \neq \varnothing\).
-    Noter que pour \(d=2\), le problème est équivalent à Vertex Cover.
-    Le but de l'exercice est de construire un noyau pour \(d\)-HITTING en utilisation un lemme d'Erdős-Rado, aussi appelé le \emph{lemme du tournesol}.
-    Un \defemph{tournesol à \(k\) pétales et de capitule \(Y\)} est une collection de \(k\) ensembles \(S_1,\ldots S_k\) telle que
+    On appelle \(d\)-HITTING le probl\`eme suivant.
+    Soit \(\mathcal{A}\) une famille d'ensembles sur un univers \(U\) telle que chaque ensemble contient au plus \(d\) \'el\'ements et soit \(k\) un param\`etre.
+    Le but est de d\'ecider s'il existe un ensemble \(H \subset U\) de cardinal au plus \(k\) tel que pour tout \(S\in A\), on a \(S\cap H \neq \varnothing\).
+    Noter que pour \(d=2\), le probl\`eme est \'equivalent \`a Vertex Cover.
+    Le but de l'exercice est de construire un noyau pour \(d\)-HITTING en utilisation un lemme d'Erd\"os-Rado, aussi appel\'e le \emph{lemme du tournesol}.
+    Un \defemph{tournesol \`a \(k\) p\'etales et de capitule \(Y\)} est une collection de \(k\) ensembles \(S_1,\ldots S_k\) telle que
     \begin{enumerate}[label=\roman*)]
         \item pour tout \(i\neq j\), on a \(S_i \cap S_j = Y\),
-        \item les ensembles \(S_i \setminus Y\) (appelés pétales) sont non vides.
+        \item les ensembles \(S_i \setminus Y\) (appel\'es p\'etales) sont non vides.
     \end{enumerate}
 
     \begin{lemma}[du tournesol]\,\\
-        Soit \(\mathcal{A}\) une famille d'ensembles sur un univers U, telle que chaque ensemble de \(\mathcal A\) contient au plus \(d\) éléments.
-        Si \(|\mathcal{A}| > d ! {(k-1)}^d\) alors \(\mathcal{A}\) contient un tournesol à \(k\) pétales.
+        Soit \(\mathcal{A}\) une famille d'ensembles sur un univers U, telle que chaque ensemble de \(\mathcal A\) contient au plus \(d\) \'el\'ements.
+        Si \(|\mathcal{A}| > d ! {(k-1)}^d\) alors \(\mathcal{A}\) contient un tournesol \`a \(k\) p\'etales.
     \end{lemma}\vspace{1mm}
 
-    On pourra commencer par traiter la troisième question en admettant les résultats des deux premières.
+    On pourra commencer par traiter la troisi\`eme question en admettant les r\'esultats des deux premi\`eres.
 
     \begin{enumerate}
-        \item Démontrer le lemme par récurrence sur \(d\).
+        \item D\'emontrer le lemme par r\'ecurrence sur \(d\).
 
-        \item Montrer que le tournesol du Lemme du tournesol peut être calculé en temps polynomial en \(|\mathcal{A}|, |U|\) et \(k\).
+        \item Montrer que le tournesol du Lemme du tournesol peut \^etre calcul\'e en temps polynomial en \(|\mathcal{A}|, |U|\) et \(k\).
 
-        \item En déduire un noyau pour \(d\)-HITTING avec au plus \(d! k^d\) ensembles.
+        \item En d\'eduire un noyau pour \(d\)-HITTING avec au plus \(d! k^d\) ensembles.
     \end{enumerate}
 \end{td-exo}
