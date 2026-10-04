@@ -1,0 +1,163 @@
+\section{Mineurs de graphes}\label{sec:mineurs-de-graphes}
+
+% --- EXERCICE 1 ---
+\begin{td-exo}[Ordres graphiques]
+    \begin{enumerate}
+        \item Montrer que la relation de sous-graphe forme un ordre sur les graphes.
+        \item On définit la relation suivante sur les graphes :
+        \begin{equation*}
+            G \ll G' \quad\text{si}\quad n(G) \le n(G') \quad\text{et}\quad m(G) \le m(G').
+        \end{equation*}
+        La relation \(\ll\) forme-t-elle un ordre sur les graphes ?
+    \end{enumerate}
+
+
+        
+        \begin{definition}
+            Soit \(E\) un ensemble et \(\mathcal{R}\) une relation entre deux éléments de \(E\).
+            On dit que \(\mathcal{R}\) est une relation d'ordre sur \(E\) si elle vérifie les propriétés suivantes :
+            \begin{enumerate}[label=\roman*)]
+                \item Réflexivité : pour tout \(x \in E\), on a \(x\mathcal{R}x\).
+                \item Antisymétrie : pour tous \(x,y\in E\), si \(x\mathcal{R}y\) et \(y\mathcal{R}x\) alors \(x = y\).
+                \item Transitivité : pour tous \(x,y,z\in E\), si \(x\mathcal{R}y\) et \(y\mathcal{R}z\) alors \(x\mathcal{R}z\).
+            \end{enumerate}
+        \end{definition}
+\end{td-exo}
+
+
+        
+        \begin{definition}
+            Soit \(E\) un ensemble et \(\mathcal{R}\) une relation entre deux éléments de \(E\).
+            On dit que \(\mathcal{R}\) est une relation d'ordre sur \(E\) si elle vérifie les propriétés suivantes :
+            \begin{enumerate}[label=\roman*)]
+                \item Réflexivité : pour tout \(x \in E\), on a \(x\mathcal{R}x\).
+                \item Antisymétrie : pour tous \(x,y\in E\), si \(x\mathcal{R}y\) et \(y\mathcal{R}x\) alors \(x = y\).
+                \item Transitivité : pour tous \(x,y,z\in E\), si \(x\mathcal{R}y\) et \(y\mathcal{R}z\) alors \(x\mathcal{R}z\).
+            \end{enumerate}
+        \end{definition}
+
+
+\begin{td-sol}
+    \begin{enumerate}
+        \item On rappelle la définition d'un ordre :
+        
+        \begin{definition}
+            Soit \(E\) un ensemble et \(\mathcal{R}\) une relation entre deux éléments de \(E\).
+            On dit que \(\mathcal{R}\) est une relation d'ordre sur \(E\) si elle vérifie les propriétés suivantes :
+            \begin{enumerate}[label=\roman*)]
+                \item Réflexivité : pour tout \(x \in E\), on a \(x\mathcal{R}x\).
+                \item Antisymétrie : pour tous \(x,y\in E\), si \(x\mathcal{R}y\) et \(y\mathcal{R}x\) alors \(x = y\).
+                \item Transitivité : pour tous \(x,y,z\in E\), si \(x\mathcal{R}y\) et \(y\mathcal{R}z\) alors \(x\mathcal{R}z\).
+            \end{enumerate}
+        \end{definition}
+
+        Vérifions alors ces propriétés sur la relation de sous-graphe :
+        \begin{enumerate}[label=(\alph*)]
+            \item \textbf{Réflexivité :} pour tout graphe \(G\), on a bien \(V(G) \subseteq V(G)\) et \(E(G) \subseteq E(G)\), donc \(G\) est bien sous-graphe de \(G\).
+
+            \item \textbf{Antisymétrie :} soient \(G\) et \(H\) deux graphes tels que \(G\) est sous-graphe de \(H\) et \(H\) est sous-graphe de \(G\).
+            \begin{equation*}
+                \begin{aligned}
+                    V(G) \subseteq V(H) \quad\text{et}\quad V(H) \subseteq V(G) &\implies V(G) = V(H) \\
+                    E(G) \subseteq E(H) \quad\text{et}\quad E(H) \subseteq E(G) &\implies E(G) = E(H)
+                \end{aligned}
+            \end{equation*}
+            Ainsi, comme \(V(G) = V(H)\) et \(E(G) = E(H)\), on a bien \(G = H\).
+
+            \item \textbf{Transitivité :} soient \(G, H\) et \(I\) trois graphes tels que \(G\) est sous-graphe de \(H\) et \(H\) est sous-graphe de \(I\).
+            \begin{equation*}
+                \begin{aligned}
+                    V(G) \subseteq V(H) \quad\text{et}\quad V(H) \subseteq V(I) &\implies V(G) \subseteq V(I) \\
+                    E(G) \subseteq E(H) \quad\text{et}\quad E(H) \subseteq E(I) &\implies E(G) \subseteq E(I)
+                \end{aligned}
+            \end{equation*}
+            Ainsi, comme \(V(G) \subseteq V(I)\) et \(E(G) \subseteq E(I)\), on a bien \(G\) sous-graphe de \(I\).
+        \end{enumerate}
+
+        \item On pose \(G = ([a, b, c, d], [(a, b), (c, d)])\) et \(H = ([a, b, c, d], [(a, b), (b, c)])\) comme dans la figure ci-dessous :
+        
+        % \input{./tikz/ex1_1}
+
+        On a \(n(G) = n(H)\) et \(m(G) = m(H)\) donc \(G \ll H\) et \(H \ll G\).
+        Pourtant, \(G \neq H\), donc la propriété d'antisymétrie n'est pas respectée et \(\ll\) ne définit pas un ordre sur les graphes.
+    \end{enumerate}
+\end{td-sol}
+
+% --- EXERCICE 2 ---
+\begin{td-exo}[Sous-graphe induit dense]
+    Montrer que la borne donnée par le théorème du sous-graphe induit dense est optimale.
+
+    \begin{theorem}[Sous-graphe induit dense]
+    Si le degré moyen d'un graphe \(G\) est \(\geq 2k\), alors \(G\) contient un sous-graphe induit \(F\) de degré minimum \(\geq k + 1\).
+\end{theorem}
+
+\end{td-exo}
+
+
+\begin{theorem}[Sous-graphe induit dense]
+    Si le degré moyen d'un graphe \(G\) est \(\geq 2k\), alors \(G\) contient un sous-graphe induit \(F\) de degré minimum \(\geq k + 1\).
+\end{theorem}
+
+\begin{td-sol}
+    On rappelle le théorème :
+    \begin{theorem}[Sous-graphe induit dense]
+        Si le degré moyen d'un graphe \(G\) est \(\geq 2k\), alors \(G\) contient un sous-graphe induit \(F\) de degré minimum \(\geq k + 1\).
+    \end{theorem}
+
+    Soit \(G\) un cycle de longueur \(n\). Alors, on a \(\ol{d}(G) = 2k = 2 \times 1\).
+    On peut bien trouver un sous-graphe induit \(F\) de degré minimum \(\geq k + 1 = 2\) (par exemple, le cycle lui-même) mais il n'existe pas de sous-graphe induit \(F\) de degré minimum \(\geq k + 2 = 3\), car tous les sommets du cycle ont un degré de \(2\).
+
+    La borne est donc optimale.
+
+    On peut aussi construire un exemple plus général. On construit \(G\) de la manière suivante :
+    \begin{itemize}
+        \item On prend un graphe complet \(K_{k + 1}\) de degré moyen \(k\).
+        \item On ajoute au graphe un stable de taille \(M\) et on crée le biparti complet entre le stable et le graphe complet.
+    \end{itemize}
+    On obtient alors un graphe \(G\) de degré total
+    \begin{equation*}
+        (k+1)(k+M) + M(k+1) = (k+1)(k+2M)
+    \end{equation*}
+    et de degré moyen
+    \begin{equation*}
+        \frac{(k+1)(k+2M)}{k+1+M}.
+    \end{equation*}
+    En développant, on trouve que pour \(M \geq \frac{k^2 + k}{2}\), on a bien \(\ol{d}(G) \geq 2k\).
+    Comme le graphe complet \(K_{k + 1}\) est un sous-graphe induit de \(G\), on a bien un sous-graphe induit de degré minimum \(\geq k + 1\), mais il n'existe pas de sous-graphe induit de degré minimum \(\geq k + 2\), car tous les sommets du stable ont un degré de \(k + 1\).
+\end{td-sol}
+
+% --- EXERCICE 3 ---
+\begin{td-exo}[Gros sous-graphe couvrant biparti]
+    Montrer que tout graphe \(G\) contient un sous-graphe biparti couvrant \(H\) avec \(m(H) \geq m(G)/2\) (on pourra ordonner les sommets de \(G\) en \(v_1,\ldots,v_n\) et construire la bipartition \(X, Y\) de \(H\) en plaçant \(v_i\) dans \(X\) ou \(Y\) en fonction des \(v_j\) pour \(j < i\)).
+\end{td-exo}
+
+\begin{td-sol}
+    Soit \(H\) le sous-graphe induit de \(G\) de degré moyen maximum et de nombre de sommets minimum pour cela.
+
+    Si \(\delta(H) \geq k + 1\), la condition est directement vérifiée. Sinon, \(H\) contient un sommet \(x\) tel que \(d_H(x) \leq k\).
+
+    En particulier, on a \(\ol{d}(H) \geq \ol{d}(G) \geq 2k\). On déduit :
+    \begin{equation*}
+        \begin{aligned}
+            2m(H \setminus x) &= 2m(H) - 2d_H(x) \geq 2(m(H) - k) \\
+            &\geq \frac{2}{n(H)} \cdot \left(n(H) m(H) - n(H) k\right) \\
+            &\geq \frac{2}{n(H)} \cdot \left(n(H) m(H) - m(H)\right) \\
+            &\geq 2 \cdot \frac{m(H)}{n(H)} \cdot (n(H) - 1) \\
+            &= \ol{d}(H) \cdot n(H \setminus x).
+        \end{aligned}
+    \end{equation*}
+    Et donc :
+    \begin{equation*}
+        \ol{d}(H \setminus x) = 2 \frac{m(H \setminus x)}{n(H \setminus x)} \geq \ol{d}(H).
+    \end{equation*}
+
+    Si \(\ol{d}(H \setminus x) > \ol{d}(H)\), cela contredit le choix de \(H\).
+    Si \(\ol{d}(H \setminus x) = \ol{d}(H)\), cela contredit également le choix de \(H\) car \(H \setminus x\) possède un sommet de moins que \(H\).
+\end{td-sol}
+
+% --- EXERCICE 4 ---
+\begin{td-exo}[Complexité de sous-graphe]
+    Quelle est la complexité du problème algorithmique suivant, le graphe \(H\) étant fixé ?
+
+    Et de celui-ci ?
+\end{td-exo}
