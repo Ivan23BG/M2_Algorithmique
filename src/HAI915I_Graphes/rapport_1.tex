@@ -157,3 +157,70 @@
 
     % insert algo 2 here
 \end{td-exo}
+
+
+\begin{td-exo}[Ordre des mineurs]\, % 5
+    Montrer que la relation de mineur forme un ordre sur les graphes.
+\end{td-exo}
+
+\begin{td-sol}[]\,
+    On rappelle d'abord la d\'efinition d'un mineur de graphe :
+    \begin{definition}
+        Soient \(G\) et \(H\) deux graphes. On dit que \(H\) est un \defemph{mineur} de \(G\), not\'e \(H \preccurlyeq G\), si \(H\) peut \^etre obtenu à partir de \(G\) par une suite (éventuellement vide) d'opérations parmi :
+        \begin{enumerate}[label=\roman*)]
+            \item la suppression de sommets,
+            \item la suppression d'arêtes,
+            \item la contraction d'arêtes.
+        \end{enumerate}
+    \end{definition}
+    \vspace{2mm}
+
+    De mani\`ere équivalente, \(H \preccurlyeq G\) s'il existe une famille de sous-graphes connexes de \(G\), not\'ee \((V_x)_{x \in V(H)}\), disjoints deux à deux (les modèles de sommets), tels que pour toute arête \((x, y) \in E(H)\), il existe au moins une arête dans \(G\) reliant un sommet de \(V_x\) à un sommet de \(V_y\).
+
+    V\'erifions alors les trois propri\'et\'es d'une relation d'ordre sur l'ensemble des graphes (à isomorphisme pr\`es) :
+
+    \begin{enumerate}
+        \item R\'eflexivit\'e : soit \(G\) un graphe.
+        En effectuant une suite vide d'opérations (aucune suppression de sommet, aucune suppression d'arête, aucune contraction), on obtient le graphe \(G\) lui-même.
+        Ainsi, on a bien \(G \preccurlyeq G\).
+
+        \item Antisym\'etrie : soient \(G\) et \(H\) deux graphes tels que \(G \preccurlyeq H\) et \(H \preccurlyeq G\).
+        
+        On sait que les trois opérations élémentaires réduisent ou laissent invariant le nombre de sommets \(n(\cdot)\) ainsi que le nombre d'arêtes \(m(\cdot)\).
+        Par conséquent, si \(A \preccurlyeq B\), alors on a :
+        \begin{equation*}
+            n(A) \leq n(B) \quad \text{et} \quad m(A) \leq m(B).
+        \end{equation*}
+
+        Comme \(G \preccurlyeq H\) et \(H \preccurlyeq G\), on a d'une part :
+        \begin{equation*}
+            \begin{aligned}
+                \hphantom{\implies} & n(G) \leq n(H) \quad \text{et} \quad n(H) \leq n(G) \\
+                \implies & n(G) \leq n(H) \leq n(G) \\
+                \implies & n(G) = n(H).
+            \end{aligned}
+        \end{equation*}
+
+        Et d'autre part :
+        \begin{equation*}
+            \begin{aligned}
+                \hphantom{\implies} & m(G) \leq m(H) \quad \text{et} \quad m(H) \leq m(G) \\
+                \implies & m(G) \leq m(H) \leq m(G) \\
+                \implies & m(G) = m(H).
+            \end{aligned}
+        \end{equation*}
+
+        Puisque \(n(G) = n(H)\) et \(m(G) = m(H)\), aucune opération modifiant le nombre de sommets ou d'arêtes n'a pu être appliquée pour passer de \(G\) à \(H\) (et réciproquement). La suite d'opérations permettant d'obtenir \(G\) à partir de \(H\) est donc nécessairement vide, ce qui implique que \(G\) et \(H\) sont identiques.
+        Ainsi, on a bien \(G = H\).
+
+        \item Transitivit\'e : soient \(G, H\) et \(I\) trois graphes tels que \(G \preccurlyeq H\) et \(H \preccurlyeq I\).
+        
+        Par d\'efinition, \(H\) est obtenu à partir de \(I\) par une suite d'opérations \(S_1\) (suppressions/contractions), et \(G\) est obtenu à partir de \(H\) par une suite d'opérations \(S_2\).
+        
+        La suite d'opérations \(S_1 \cdot S_2\) est une suite constituée uniquement de suppressions de sommets, suppressions d'arêtes et contractions d'arêtes. En appliquant la suite \(S_1 \cdot S_2\) directement sur le graphe \(I\), on obtient le graphe \(G\).
+        
+        Ainsi, on a bien \(G \preccurlyeq I\).
+    \end{enumerate}
+
+    La relation \(\preccurlyeq\) est r\'eflexive, antisym\'etrique et transitive : la relation de mineur d\'efinit donc bien un ordre sur les graphes.
+\end{td-sol}
